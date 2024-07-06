@@ -14,7 +14,7 @@ from pathlib import Path
 from datetime import timedelta
 import os
 import dotenv
-import dj_database_url
+import dj_database_url # type: ignore
 
 
 dotenv.load_dotenv()
@@ -94,11 +94,18 @@ WSGI_APPLICATION = '_core.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+ "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "USER": os.getenv("POSTGRES_USERNAME"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        "NAME": os.getenv("POSTGRES_DB_NAME"),
+        "HOST": os.getenv("POSTGRES_DB_HOST"),
+        "PORT": os.getenv("POSTGRES_DB_PORT"),
     }
 }
+
+DATABASE_URL = os.getenv('DATABASE_URL')
+
 
 
 # Password validation
