@@ -1,12 +1,16 @@
 from django.db import models
 
-class Professionals():
-        
-    class Meta:
-        ordering = ["id"]
-    
+class Professionals(models.Model):
     fullname = models.CharField(max_length=50, unique=True)
     profession = models.CharField(max_length=20)
-    adress = models.CharField(max_length=120) 
+    address = models.CharField(max_length=120)  
     contact = models.CharField(max_length=80)
-    socialname = models.CharField(max_length=50)
+    socialname = models.CharField(max_length=50, null=True, blank=True)
+
+    class Meta:
+        ordering = ["id"]
+
+    def __str__(self):
+        return self.fullname
+
+

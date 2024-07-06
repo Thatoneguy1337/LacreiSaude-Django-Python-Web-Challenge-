@@ -14,7 +14,7 @@ from pathlib import Path
 from datetime import timedelta
 import os
 import dotenv
-import dj_database_url # type: ignore
+
 
 
 dotenv.load_dotenv()
@@ -48,12 +48,11 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    "rest_framework",
-    "drf_spectacular"
+    "rest_framework"
 ]
 
 MY_APPS = [
-    "professionals"
+    "professionals",
     "schedules"
 ]
 

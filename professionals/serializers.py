@@ -1,35 +1,16 @@
-from rest_framework import serializers # type: ignore
-from rest_framework.validators import UniqueValidator # type: ignore
+from rest_framework import serializers
+from rest_framework.validators import UniqueValidator
 from .models import Professionals
 
-
-
-
 class ProfessionalsSerializer(serializers.ModelSerializer):
-
     fullname = serializers.CharField(
-        validators = [
+        validators=[
             UniqueValidator(
-                queryset= Professionals.objects.all(),
-                message= "A professional with that name already exists"
+                queryset=Professionals.objects.all(),
+                message="A professional with that name already exists"
             )
         ]
     )
-
-    def create(self, validated_data: dict) -> Professionals:
-      
-      
-      return Professionals.objects.create_user(**validated_data)
-
-    
-    def update(self, instance: Professionals, validated_data: dict) -> Professionals:
-        
-        
-
-        instance.save()
-
-        return instance
-
 
     class Meta:
         model = Professionals
@@ -37,8 +18,17 @@ class ProfessionalsSerializer(serializers.ModelSerializer):
             "id",
             "fullname",
             "profession",
-            "adress",
+            "address",
             "contact",
             "socialname",
         ]
         read_only_fields = ["id"]
+
+    def create(self, validated_data: dict) -> Professionals:
+        return Professionals.objects.create(**validated_data)
+
+    def update(self, instance: Professionals, validated_data: dict) -> Professionals:
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        return instance
