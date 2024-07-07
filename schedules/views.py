@@ -3,6 +3,11 @@ from django_filters import rest_framework as filters
 from .models import Schedules
 from .serializers import SchedulesSerializer
 
+class ScheduleCreateView(generics.CreateAPIView):
+    queryset = Schedules.objects.all()
+    serializer_class = SchedulesSerializer
+
+
 class ScheduleFilter(filters.FilterSet):
     professional_id = filters.NumberFilter(field_name="professional__id")
 
