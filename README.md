@@ -230,7 +230,7 @@ Nesta rota é possível listar consultas que o profissional cadastrado fará nas
 NO BODY
 
 
-`GET /api/schedules/2/professional/ - FORMATO DA RESPOSTA - STATUS 200`
+`GET /api/schedules/:id/professional/ - FORMATO DA RESPOSTA - STATUS 200`
 
 ```json  
 {
