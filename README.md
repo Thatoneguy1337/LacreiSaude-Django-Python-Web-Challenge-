@@ -18,8 +18,8 @@ Esta aplicação roda na porta: http://127.0.0.1:8000/
 | POST        | Create Schedules           | `api/schedules/`                              | No Authentication       |
 | GET         | List all schedules         | `api/schedules/all/`                          | No Authentication       |
 | GET         | Retrieve schedules     	   | `api/schedules/:id/`                          | No Authentication       |
-| PATCH       | Update schedules       	   | `api/schedules/:id`                           | No Authentication       |
-| GET         | Get professional schedules | `api/schedules/professional_id/professionals` | No Authentication       |
+| PATCH       | Update schedules       	   | `api/schedules/:id/`                           | No Authentication       |
+| GET         | Get professional schedules | `api/schedules/professional_id/professional/` | No Authentication       |
 
 # Instalando Dependências
 
