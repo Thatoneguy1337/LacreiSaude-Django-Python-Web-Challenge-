@@ -8,18 +8,18 @@ Esta aplicação roda na porta: http://127.0.0.1:8000/
 # Endpoints
   
 
-| HTTP Method | Description            	   | Endpoint                            	 | Authentication Required |
-| ----------- | ----------------------     | ------------------------------------------- | ----------------------- |
-| POST        | Register professional      | `api/professionals/`                        | No Authentication       |
-| PATCH       | Update professional        | `api/professionals/:id/`                    | No Authentication       |             
-| GET         | List All professionals     | `api/professionals/all/`                    | No Authentication       |
-| GET         | Get professional           | `api/professionals/:id/`                    | No Authetication        |
-| DELETE      | Delete professional        | `api/professionals/:id/`                    | No Authentication       |
-| POST        | Create Schedules           | `api/schedules/`                            | No Authentication       |
-| GET         | List all schedules         | `api/schedules/all/`                        | No Authentication       |
-| GET         | Retrieve schedules     	   | `api/schedules/:id/`                        | No Authentication       |
-| PATCH       | Update schedules       	   | `api/schedules/:id`                         | No Authentication       |
-| GET         | Get professional schedules | `api/schedules/?professional_id=2`          | No Authentication       |
+| HTTP Method | Description            	   | Endpoint                            	   | Authentication Required |
+| ----------- | ----------------------     | --------------------------------------------- | ----------------------- |
+| POST        | Register professional      | `api/professionals/`                          | No Authentication       |
+| PATCH       | Update professional        | `api/professionals/:id/`                      | No Authentication       |             
+| GET         | List All professionals     | `api/professionals/all/`                      | No Authentication       |
+| GET         | Get professional           | `api/professionals/:id/`                      | No Authetication        |
+| DELETE      | Delete professional        | `api/professionals/:id/`                      | No Authentication       |
+| POST        | Create Schedules           | `api/schedules/`                              | No Authentication       |
+| GET         | List all schedules         | `api/schedules/all/`                          | No Authentication       |
+| GET         | Retrieve schedules     	   | `api/schedules/:id/`                          | No Authentication       |
+| PATCH       | Update schedules       	   | `api/schedules/:id`                           | No Authentication       |
+| GET         | Get professional schedules | `api/schedules/professional_id/professionals` | No Authentication       |
 
 # Instalando Dependências
 
@@ -153,8 +153,15 @@ NO BODY
 
 `DELETE api/professionals/:id/ - FORMATO DA RESPOSTA - STATUS 204`
 
-NO RETURN
-
+```json{
+	"id": 2,
+	"fullname": "Roberta Peres",
+	"profession": "Medical Doctor",
+	"address": "Rua Itajubara, 145",
+	"contact": "9999-9999",
+	"socialname": "Roberta Furacão"
+}
+```
 <h2 align ='center'>Agendando uma consulta</h2>
 
 Nesta rota é possível agendar uma consulta com um profissional cadastrado
